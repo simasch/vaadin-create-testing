@@ -1,7 +1,7 @@
 package ch.martinelli.edu.vaadin.testing.views.masterdetail;
 
-import ch.martinelli.edu.vaadin.testing.data.Person;
-import ch.martinelli.edu.vaadin.testing.services.PersonService;
+import ch.martinelli.edu.vaadin.testing.domain.Person;
+import ch.martinelli.edu.vaadin.testing.domain.PersonService;
 import ch.martinelli.edu.vaadin.testing.views.MainLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -22,9 +22,6 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
-
-import java.util.Optional;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 

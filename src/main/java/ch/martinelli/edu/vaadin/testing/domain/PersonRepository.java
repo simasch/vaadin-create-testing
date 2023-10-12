@@ -1,4 +1,4 @@
-package ch.martinelli.edu.vaadin.testing.data;
+package ch.martinelli.edu.vaadin.testing.domain;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
