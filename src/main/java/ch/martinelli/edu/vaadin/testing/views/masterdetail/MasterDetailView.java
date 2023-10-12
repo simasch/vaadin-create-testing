@@ -39,9 +39,9 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
     public void beforeEnter(BeforeEnterEvent event) {
         event.getRouteParameters().get(PERSON_ID).map(Long::parseLong)
                 .ifPresent(aLong -> {
-                    var personFromBackend = personService.get(aLong);
-                    if (personFromBackend.isPresent()) {
-                        personForm.setPerson(personFromBackend.get());
+                    var person = personService.get(aLong);
+                    if (person.isPresent()) {
+                        personForm.setPerson(person.get());
                     } else {
                         Notification.show(String.format("The requested person was not found, ID = %s", aLong), 3000,
                                 Position.BOTTOM_START);
@@ -92,10 +92,10 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
                         Notification.show("Data updated");
                         UI.getCurrent().navigate(MasterDetailView.class);
                     } catch (ObjectOptimisticLockingFailureException exception) {
-                        Notification n = Notification.show(
+                        var notification = Notification.show(
                                 "Error updating the data. Somebody else has updated the record while you were making changes.");
-                        n.setPosition(Position.MIDDLE);
-                        n.addThemeVariants(NotificationVariant.LUMO_ERROR);
+                        notification.setPosition(Position.MIDDLE);
+                        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
                     }
                 },
                 () -> {

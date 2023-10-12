@@ -1,14 +1,11 @@
 package ch.martinelli.edu.vaadin.testing.views.helloworld;
 
-import ch.martinelli.edu.vaadin.testing.views.KaribuTest;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.testbench.unit.UIUnitTest;
 import org.junit.jupiter.api.Test;
 
-import static com.github.mvysny.kaributesting.v10.LocatorJ.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HelloWorldViewTestbenchUnitTest extends UIUnitTest {

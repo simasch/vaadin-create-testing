@@ -4,8 +4,6 @@ import ch.martinelli.edu.vaadin.testing.views.MainLayout;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -20,13 +18,13 @@ public class HelloWorldView extends VerticalLayout {
 
     public HelloWorldView() {
         var name = new TextField("Your name");
+
         var sayHello = new Button("Say hello");
+
         var greeting = new Paragraph();
         greeting.setId("hello-greeting");
 
-        sayHello.addClickListener(e -> {
-            greeting.setText("Hello %s".formatted(name.getValue()));
-        });
+        sayHello.addClickListener(e -> greeting.setText("Hello %s".formatted(name.getValue())));
         sayHello.addClickShortcut(Key.ENTER);
 
         var form = new HorizontalLayout(name, sayHello);
