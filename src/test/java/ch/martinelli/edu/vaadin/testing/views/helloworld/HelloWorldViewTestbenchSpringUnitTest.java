@@ -22,7 +22,8 @@ class HelloWorldViewTestbenchSpringUnitTest extends SpringUIUnitTest {
         var name = $(TextField.class).withCaption("Your name").first();
         test(name).setValue("Test");
 
-        test($(Button.class).withCaption("Say hello").first()).click();
+        var button = $(Button.class).withCaption("Say hello").first();
+        test(button).click();
 
         var greeting = $(Paragraph.class).withId("hello-greeting").first();
 

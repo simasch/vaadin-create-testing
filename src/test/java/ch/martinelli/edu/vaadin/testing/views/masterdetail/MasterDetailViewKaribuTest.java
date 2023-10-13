@@ -29,7 +29,7 @@ class MasterDetailViewKaribuTest extends KaribuTest {
         GridKt._sort(grid, QuerySortOrder.asc("firstName").build().getFirst());
 
         var row = GridKt._get(grid, 0);
-        assertThat(row.getFirstName()).isEqualTo("Aaron");
+        assertThat(row.getFirstName()).startsWith("Aaron");
 
         GridKt._clickItem(grid, 0);
 

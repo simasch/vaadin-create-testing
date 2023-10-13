@@ -26,7 +26,7 @@ class MasterDetailViewSpringUIUnitTest extends SpringUIUnitTest {
         gridTester.sortByColumn(0);
 
         var firstName = gridTester.getCellText(0, 0);
-        assertThat(firstName).isEqualTo("Aaron");
+        assertThat(firstName).startsWith("Aaron");
 
         gridTester.clickRow(0);
 

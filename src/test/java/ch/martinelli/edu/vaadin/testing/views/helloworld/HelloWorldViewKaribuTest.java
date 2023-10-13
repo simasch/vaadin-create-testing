@@ -19,7 +19,8 @@ class HelloWorldViewKaribuTest extends KaribuTest {
         var name = _get(TextField.class, spec -> spec.withCaption("Your name"));
         _setValue(name, "Test");
 
-        _click(_get(Button.class, spec -> spec.withCaption("Say hello")));
+        var button = _get(Button.class, spec -> spec.withCaption("Say hello"));
+        _click(button);
 
         var greeting = _get(Paragraph.class, spec -> spec.withId("hello-greeting"));
 
