@@ -25,21 +25,26 @@ public class PersonForm extends VerticalLayout {
         add(form);
 
         var firstName = new TextField("First Name");
+        firstName.setId("first-name");
         binder.forField(firstName).asRequired().bind("firstName");
 
         var lastName = new TextField("Last Name");
+        lastName.setId("last-name");
         binder.forField(lastName).asRequired().bind("lastName");
 
         var email = new EmailField("Email");
+        email.setId("email");
         binder.forField(email).asRequired().bind("email");
 
         form.add(firstName, lastName, email);
 
         var cancel = new Button("Cancel");
+        cancel.setId("cancel");
         cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         cancel.addClickListener(e -> onCancel.run());
 
         var save = new Button("Save");
+        save.setId("save");
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         save.addClickListener(e -> {
             if (this.person == null) {
@@ -58,6 +63,7 @@ public class PersonForm extends VerticalLayout {
     }
 
     public void setPerson(Person person) {
+        this.person = person;
         binder.readBean(person);
     }
 }

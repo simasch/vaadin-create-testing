@@ -11,7 +11,6 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
     @SequenceGenerator(name = "person_seq", initialValue = 1000)
     private Long id;
-
     @Version
     private int version;
     @NotNull

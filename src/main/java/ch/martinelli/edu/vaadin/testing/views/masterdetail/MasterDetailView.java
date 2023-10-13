@@ -1,7 +1,7 @@
 package ch.martinelli.edu.vaadin.testing.views.masterdetail;
 
 import ch.martinelli.edu.vaadin.testing.domain.Person;
-import ch.martinelli.edu.vaadin.testing.domain.PersonService;
+import ch.martinelli.edu.vaadin.testing.domain.PersonRepository;
 import ch.martinelli.edu.vaadin.testing.views.MainLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.grid.Grid;
@@ -22,11 +22,11 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
     public static final String PERSON_ID = "personID";
     private final Grid<Person> grid = new Grid<>(Person.class, false);
 
-    private final PersonService personService;
+    private final PersonRepository personRepository;
     private PersonForm personForm;
 
-    public MasterDetailView(PersonService personService) {
-        this.personService = personService;
+    public MasterDetailView(PersonRepository personRepository) {
+        this.personRepository = personRepository;
 
         setSizeFull();
         setSplitterPosition(70);
@@ -39,7 +39,7 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
     public void beforeEnter(BeforeEnterEvent event) {
         event.getRouteParameters().get(PERSON_ID).map(Long::parseLong)
                 .ifPresent(aLong -> {
-                    var person = personService.get(aLong);
+                    var person = personRepository.findById(aLong);
                     if (person.isPresent()) {
                         personForm.setPerson(person.get());
                     } else {
@@ -63,7 +63,7 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
         grid.addColumn("firstName").setAutoWidth(true);
         grid.addColumn("lastName").setAutoWidth(true);
         grid.addColumn("email").setAutoWidth(true);
-        grid.setItems(query -> personService.list(
+        grid.setItems(query -> personRepository.findAll(
                         PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
                 .stream());
         grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
@@ -85,7 +85,7 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
         personForm = new PersonForm(
                 person -> {
                     try {
-                        personService.update(person);
+                        personRepository.save(person);
                         personForm.setPerson(null);
                         refreshGrid();
 
