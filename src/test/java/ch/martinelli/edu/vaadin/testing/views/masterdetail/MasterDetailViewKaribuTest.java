@@ -39,8 +39,6 @@ class MasterDetailViewKaribuTest extends KaribuTest {
         var save = _get(Button.class, spec -> spec.withId("save"));
         _click(save);
 
-        var notification = NotificationsKt.getNotifications();
-        assertThat(notification).hasSize(1);
         NotificationsKt.expectNotifications("Data updated");
 
         row = GridKt._get(grid, 0);
