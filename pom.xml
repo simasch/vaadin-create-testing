@@ -210,7 +210,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
                     <!-- Runs the integration tests (*IT) after the server is started -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
