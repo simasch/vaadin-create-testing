@@ -22,7 +22,7 @@ public class MasterDetailView extends SplitLayout implements BeforeEnterObserver
     public static final String PERSON_ID = "personID";
     private final Grid<Person> grid = new Grid<>(Person.class, false);
 
-    private final PersonRepository personRepository;
+    private final transient PersonRepository personRepository;
     private PersonForm personForm;
 
     public MasterDetailView(PersonRepository personRepository) {

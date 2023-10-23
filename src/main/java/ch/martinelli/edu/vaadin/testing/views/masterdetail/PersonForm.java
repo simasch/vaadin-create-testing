@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 public class PersonForm extends VerticalLayout {
 
     private final Binder<Person> binder = new BeanValidationBinder<>(Person.class);
-    private Person person;
+    private transient Person person;
 
     public PersonForm(Consumer<Person> onSave, Runnable onCancel) {
         setClassName("editor-layout");
