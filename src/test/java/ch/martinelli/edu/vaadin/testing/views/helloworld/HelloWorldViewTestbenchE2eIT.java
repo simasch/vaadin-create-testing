@@ -16,7 +16,7 @@ class HelloWorldViewTestbenchE2eIT extends BrowserTestBase {
     }
 
     @BrowserTest
-    public void clickButton() {
+    public void sayHello() {
         var name = $(TextFieldElement.class).first();
         name.setValue("Test");
 
